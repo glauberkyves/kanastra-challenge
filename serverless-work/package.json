@@ -1,0 +1,19 @@
+{
+  "name": "serverless-work",
+  "version": "1.0.0",
+  "description": "Serverless Framework Node SQS Producer-Consumer on AWS",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "nodemon -e js  --exec \"npx serverless offline start --stage=local\"",
+    "start": "npm run start:dev"
+  },
+  "devDependencies": {
+    "serverless-lift": "^1.1.2",
+    "serverless-offline": "^13.3.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sqs": "^3.515.0",
+    "axios": "^1.6.7"
+  }
+}
