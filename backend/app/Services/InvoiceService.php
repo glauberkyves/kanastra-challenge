@@ -50,7 +50,7 @@ class InvoiceService {
        throw new \Exception("File not found");
    }
 
-    public function batch(array $data): int {
-         return $this->invoiceRepository->batch($data);
+    public function batch(array $data): void {
+         $this->invoiceRepository->batch($data);
     }
 }

@@ -8,7 +8,7 @@ class SqsService {
 
    public function send(array $data): bool {
        // @todo remover
-//       Http::fake();
+       Http::fake();
 
        return Http::post(env('AIP_SQS'), $data)->successful();
    }
