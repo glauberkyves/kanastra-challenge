@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  laravel:
+    image: bitnami/laravel:latest
+    ports:
+      - "8000:8000"
+    working_dir: /app
+    command: sh -c "composer install"
+    volumes:
+      - ./backend:/app
+    environment:
+      - LARAVEL_SKIP_DATABASE=true
+    networks:
+      - laravel
+
+  node:
+    image: node:18-alpine
+    working_dir: /usr/src/app
+    command: sh -c "yarn && npm run dev:node"
+    volumes:
+      - ./front:/usr/src/app
+    ports:
+      - "8888:8888"
+    depends_on:
+      - laravel
+    networks:
+      - laravel
+
+  labmda:
+    image: node:18-alpine
+    working_dir: /usr/src/app
+    command: sh -c "yarn && npm run start:dev"
+    volumes:
+      - ./serverless-work:/usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - laravel
+      - node
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
