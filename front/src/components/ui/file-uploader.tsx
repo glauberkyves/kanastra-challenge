@@ -1,5 +1,5 @@
 type FileUploaderProps = {
-  file: File;
+  file: File | null;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 const FileUploader = ({ file, onChange }: FileUploaderProps) => {

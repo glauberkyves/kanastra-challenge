@@ -7,11 +7,11 @@ import {useState} from "react";
 function invoice(){
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleFileChange = (event) => {
+  const handleFileChange = (event: any) => {
     setSelectedFile(event.target.files[0]);
   };
 
-  const handleUpload = async (event) => {
+  const handleUpload = async (event: any) => {
     event.preventDefault();
 
     if (!selectedFile) {
